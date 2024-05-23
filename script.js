@@ -246,6 +246,7 @@ const listaDropdown = [
 const counts = new Array(listaDeTanks.length).fill(0);
 let listaDeTanquesAbatidos = [];
 let total = 0;
+let lastClicketIndex = null;
 const notificationImagesContainer = document.querySelector('#notificationImagesContainer');
 
 function incrementCount(index) {
@@ -253,9 +254,18 @@ function incrementCount(index) {
     document.querySelector(`#counter-${index}`).textContent = counts[index];
     updateTotal();
     checkNotification();
-    listaDeTanquesAbatidos.push(listaDeTanks[index])
+    listaDeTanquesAbatidos.push(listaDeTanks[index]);
 }
 
+function decrementCount(index) {
+    event.stopPropagation();
+    if (counts[index] > 0) { 
+        counts[index]--;
+        document.querySelector(`#counter-${index}`).textContent = counts[index];
+        updateTotal();
+        listaDeTanquesAbatidos = listaDeTanquesAbatidos.filter((item, i) => i !== listaDeTanquesAbatidos.findIndex(tank => tank.nome === listaDeTanks[index].nome));
+    }
+}
 function updateTotal() {
     total = counts.reduce((acc, val) => acc + val, 0);
     document.querySelector('#total-count').textContent = total;
@@ -294,24 +304,28 @@ function generateResult() {
     if (otherText !== ""){
         mensagem += otherText + " ";
     }
-    const dropdown = document.querySelector('#dropdownLegal').value;
-    if (dropdown !== "Nenhum") {
-        mensagem += ` COM/ ${dropdown}`;
+
+    const dropdownIndex = document.querySelector('#dropdownLegal').selectedIndex;
+    const dropdownNome = listaDropdown[dropdownIndex].nome;
+
+    if (dropdownNome !== "Nenhum") {
+        mensagem += ` COM/ ${dropdownNome}`;
     }
+
     mensagem += ` (${totalAces} Ace${totalAces !== 1 ? 's' : ''})`;
     document.querySelector('.caixa').innerHTML = mensagem;
 
     const valorDropdown = parseInt(document.querySelector('#dropdownLegal').value);
     const soma = somaCusto();
-
+    const messageElement = document.getElementById('mensagemdaorinha');
+    
     if (soma >= valorDropdown) {
         const vezes = Math.floor(soma / valorDropdown)
-        alert(`SE PAGOU ${vezes}x!`)
+        messageElement.textContent = `SE PAGOU ${vezes}x!`
     } else if (soma < valorDropdown) {
-        alert('ME PARECE UM PROBLEMA DE HABILIDADE!')
+        messageElement.textContent = 'ME PARECE UM PROBLEMA DE HABILIDADE!'
     }
 }
-
 
 function resetCounts() {
     counts.fill(0);
@@ -338,28 +352,29 @@ function copyResult() {
 
 function somaCusto(){
     const soma = listaDeTanquesAbatidos.reduce((valorA, valorB) => {
-        return valorA + valorB.preco
-    }, 0)
-    return soma
+        return valorA + valorB.preco;
+    }, 0);
+    return soma;
 }
 
 document.querySelector('#resetButton').addEventListener('click', resetCounts);
-  
+
 listaDeTanks.forEach((item, index) => {
-    const alvo = document.querySelector('.grid')
+    const alvo = document.querySelector('.grid');
     alvo.innerHTML +=
         `<div class="square">
-        <img src="${item.iconPath}" alt="Imagem ${index}"/>
-        <div class="counter" id="counter-${index}">0</div>
-    </div>`
-})
+            <img src="${item.iconPath}" alt="Imagem ${index}"/>
+            <div class="counter" id="counter-${index}">0</div>
+            <button class="subtract-button" onclick="decrementCount(${index})">-</button>;
+        </div>`;
+});
 
 document.querySelectorAll('.square').forEach((square, index) => {
     square.addEventListener('click', () => incrementCount(index));
 });
 
 listaDropdown.forEach((item, index) => {
-    const alvo = document.querySelector('#dropdownLegal')
+    const alvo = document.querySelector('#dropdownLegal');
     alvo.innerHTML +=
-        `<option value="${item.custo}" >${item.nome}</option>`
-})
+        `<option value="${item.custo}" >${item.nome}</option>`;
+});

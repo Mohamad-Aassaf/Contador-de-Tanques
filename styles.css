@@ -182,3 +182,14 @@ body {
 .info .paraf {
     margin-bottom: 0;
 }
+
+.subtract-button {
+    position: absolute;
+    top: 5px;
+    right: 5px; 
+}
+#mensagemdaorinha{
+    color: red;
+    font-size: large;
+    font-weight: bold;
+}
