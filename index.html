@@ -8,17 +8,18 @@
 </head>
 <body>
     <div class="container">
-        <h2 class="pagou"></h2>
         <div class="info">
             <h2 class="tit">Informações: </h2>
-            <p class="paraf2">Criado por @mohamadassafbr
-                - Aceito sugestões!
-            </p>
-            <p class="paraft">Cuidado para não clicar errado,</p>
-            <p class="paraft">o botão "resetar" irá dar reset em TUDO.</p>
-            <p class="paraft">Salve bem as Informações antes de resetar!</p>
+            <p class="paraf2">Bugs, dúvidas ou sugestões, chame no Discord abaixo:</p>
+            <p class="paraf2">@mohamadassafbr</p>
+            <p class="paraft">O botão "resetar" irá dar reset em TUDO.</p>
+            <p class="paraft">Salve bem as informações antes de resetar!</p>
+            <p class="paraft">Gostou do trabalho? Dá uma ajudinha ai! </p>
+            <p class="paraft">PIX QR CODE: </p>
+            <img src="qrCode.png" alt="qrCode">
+            <p class="paraft">Para ajudar no trabalho!</p>
         </div>
-        
+
         <div class="dropdown-container">
             <label for="dropdown" class="dropdown-label">Estou usando um:</label>
             <select id="dropdownLegal" class="dropdown">
@@ -27,22 +28,23 @@
 
         <div class="grid">
         </div>
-        
+
         <div class="total-container">
             <span id="total-label">Total:</span>
             <span id="total-count">0</span>
             <button class="result-button" onclick="generateResult()">Gerar resultado por escrito</button>
             <button class="copy-button" onclick="copyResult()">Copiar</button>
             <button class="resetBotao" id="resetButton">Resetar</button>
-        </div>        
+        </div>
+
         <div class="caixa"></div>
         <div id="mensagemdaorinha"></div>
         <div class="outro-Container">
-            <label for="otherText">Outros:</label>
+            <label for="otherText" class="outros">Outros:</label>
             <input type="text" id="otherText">
         </div>
         <div class="notification-container">
-            <h3>Aces:</h3>
+            <h3 class="aces">Ace's:</h3>
             <div class="notification-images" id="notificationImagesContainer"></div>
         </div>
     </div>

@@ -67,7 +67,7 @@ const listaDeTanks = [
     {
         nome: 'MPT',
         iconPath: 'assets/falchion.png',
-        preco: 54 
+        preco: 54
     },
     {
         nome: 'Spatha',
@@ -246,10 +246,12 @@ const listaDropdown = [
 const counts = new Array(listaDeTanks.length).fill(0);
 let listaDeTanquesAbatidos = [];
 let total = 0;
-let lastClicketIndex = null;
 const notificationImagesContainer = document.querySelector('#notificationImagesContainer');
 
 function incrementCount(index) {
+    if (counts[index] === 0) {
+        document.querySelector(`#counter-${index}`).style.color = 'greenyellow';
+    }
     counts[index]++;
     document.querySelector(`#counter-${index}`).textContent = counts[index];
     updateTotal();
@@ -259,27 +261,37 @@ function incrementCount(index) {
 
 function decrementCount(index) {
     event.stopPropagation();
-    if (counts[index] > 0) { 
+    if (counts[index] === 1) {
+        document.querySelector(`#counter-${index}`).style.color = 'red';
+    }
+    if (counts[index] > 0) {
         counts[index]--;
         document.querySelector(`#counter-${index}`).textContent = counts[index];
         updateTotal();
         listaDeTanquesAbatidos = listaDeTanquesAbatidos.filter((item, i) => i !== listaDeTanquesAbatidos.findIndex(tank => tank.nome === listaDeTanks[index].nome));
+        checkNotification();
     }
 }
+
 function updateTotal() {
     total = counts.reduce((acc, val) => acc + val, 0);
     document.querySelector('#total-count').textContent = total;
 }
 
 function checkNotification() {
-    const notificationContainer = document.querySelector('.notification-images');
-    if (total % 5 === 0 && total !== 0) {
+    const aceCount = Math.floor(total / 5);
+    const currentAceImages = notificationImagesContainer.childElementCount;
+
+    if (total % 5 === 0 && total !== 0 && aceCount > currentAceImages) {
         showNotification();
+    } else if (aceCount < currentAceImages) {
+        removeNotificationImage();
     }
 
-    if (notificationContainer.childElementCount > 5) {
-        notificationContainer.style.flexDirection = 'column';
-        notificationContainer.style.maxHeight = 'none';
+    if (notificationImagesContainer.childElementCount > 5) {
+        notificationImagesContainer.classList.add('ace-grid');
+    } else {
+        notificationImagesContainer.classList.remove('ace-grid');
     }
 }
 
@@ -288,6 +300,21 @@ function showNotification() {
     newNotificationImage.src = 'ace.png';
     newNotificationImage.className = 'notification-image';
     notificationImagesContainer.appendChild(newNotificationImage);
+}
+
+function removeNotificationImage() {
+    const lastNotificationImage = notificationImagesContainer.querySelector('.notification-image:last-child');
+    if (lastNotificationImage) {
+        notificationImagesContainer.removeChild(lastNotificationImage);
+    }
+}
+
+function hideNotification() {
+    const notificationContainer = document.querySelector('.notification-images');
+    const notificationImages = document.querySelectorAll('.notification-image');
+    notificationImages.forEach(image => {
+        notificationContainer.removeChild(image);
+    });
 }
 
 function generateResult() {
@@ -301,7 +328,7 @@ function generateResult() {
     });
 
     const otherText = document.querySelector('#otherText').value.trim();
-    if (otherText !== ""){
+    if (otherText !== "") {
         mensagem += otherText + " ";
     }
 
@@ -309,7 +336,7 @@ function generateResult() {
     const dropdownNome = listaDropdown[dropdownIndex].nome;
 
     if (dropdownNome !== "Nenhum") {
-        mensagem += ` COM/ ${dropdownNome}`;
+        mensagem += ` C/ ${dropdownNome}`;
     }
 
     mensagem += ` (${totalAces} Ace${totalAces !== 1 ? 's' : ''})`;
@@ -318,25 +345,26 @@ function generateResult() {
     const valorDropdown = parseInt(document.querySelector('#dropdownLegal').value);
     const soma = somaCusto();
     const messageElement = document.getElementById('mensagemdaorinha');
-    
+
     if (soma >= valorDropdown) {
-        const vezes = Math.floor(soma / valorDropdown)
+        const vezes = Math.floor(soma / valorDropdown);
         messageElement.textContent = `SE PAGOU ${vezes}x!`
     } else if (soma < valorDropdown) {
-        messageElement.textContent = 'ME PARECE UM PROBLEMA DE HABILIDADE!'
+        messageElement.textContent = 'ME PARECE SER UM PROBLEMA DE HABILIDADE!'
     }
 }
 
+/* RESETAR AS CONTAGENS */
 function resetCounts() {
     counts.fill(0);
     document.querySelectorAll('.counter').forEach(counter => {
         counter.textContent = 0;
+        counter.style.color = 'red';
     });
     updateTotal();
-
-    listaDeTanquesAbatidos = []
+    listaDeTanquesAbatidos = [];
     document.querySelector('.caixa').textContent = "";
-    notificationImagesContainer.innerHTML = '';
+    hideNotification();
 }
 
 function copyResult() {
@@ -350,11 +378,8 @@ function copyResult() {
     alert('Resultado copiado para a área de transferência!');
 }
 
-function somaCusto(){
-    const soma = listaDeTanquesAbatidos.reduce((valorA, valorB) => {
-        return valorA + valorB.preco;
-    }, 0);
-    return soma;
+function somaCusto() {
+    return listaDeTanquesAbatidos.reduce((valorA, valorB) => valorA + valorB.preco, 0);
 }
 
 document.querySelector('#resetButton').addEventListener('click', resetCounts);
@@ -365,7 +390,7 @@ listaDeTanks.forEach((item, index) => {
         `<div class="square">
             <img src="${item.iconPath}" alt="Imagem ${index}"/>
             <div class="counter" id="counter-${index}">0</div>
-            <button class="subtract-button" onclick="decrementCount(${index})">-</button>;
+            <button class="subtract-button" onclick="decrementCount(${index})">-</button>
         </div>`;
 });
 
@@ -376,5 +401,5 @@ document.querySelectorAll('.square').forEach((square, index) => {
 listaDropdown.forEach((item, index) => {
     const alvo = document.querySelector('#dropdownLegal');
     alvo.innerHTML +=
-        `<option value="${item.custo}" >${item.nome}</option>`;
+        `<option value="${item.custo}">${item.nome}</option>`;
 });
