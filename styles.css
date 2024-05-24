@@ -178,7 +178,6 @@ body {
 
 
 .info {
-    position: fixed;
     top: 20px;
     right: 20px;
     background-color: #ffffff;
@@ -186,6 +185,7 @@ body {
     border: 1px solid #000000; 
     border-radius: 5px;
 }
+
 .paraf2 {
     font-weight: bold;
 }
