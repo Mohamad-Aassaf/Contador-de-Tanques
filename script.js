@@ -4,6 +4,7 @@ const portugueseContent = {
         'Bugs, dúvidas ou sugestões, chame no Discord: @mohamadassafbr',
         'O botão "resetar" irá dar reset em TUDO.',
         'Salve bem as informações antes de resetar!',
+        'Para estrangeiros:',
         'Gostou do trabalho? Dá uma ajudinha ai!',
         'PIX QR CODE:',
         'Para ajudar no trabalho!'
@@ -25,7 +26,8 @@ const englishContent = {
         'The "reset" button will reset EVERYTHING.',
         'Save the information before resetting!',
         'Liked the work? Give a little help!',
-        'PIX QR CODE:',
+        'For foreigners: ',
+        'FOR BRAZIL PIX:',
         'To help in the work!'
     ],
     totalLabel: 'Total:',
