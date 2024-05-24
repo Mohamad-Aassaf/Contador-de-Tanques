@@ -1,42 +1,3 @@
-const portugueseContent = {
-    infoTitle: 'Informações:',
-    infoText: [
-        'Bugs, dúvidas ou sugestões, chame no Discord: @mohamadassafbr',
-        'O botão "resetar" irá dar reset em TUDO.',
-        'Salve bem as informações antes de resetar!',
-        'Gostou do trabalho? Dá uma ajudinha ai!',
-        'PIX QR CODE:',
-        'Para ajudar no trabalho!'
-    ],
-    
-    totalLabel: 'Total:',
-    copyButton: 'Copiar',
-    generateResultButton: 'Gerar resultado por escrito',
-    dropdownLabel: 'Estou usando um:',
-    otherInputLabel: 'Outros:',
-    aceNotificationTitle: "Ace's:",
-    resetButton: 'Resetar',
-};
-
-const englishContent = {
-    infoTitle: 'Information:',
-    infoText: [
-        'For bugs, questions, or suggestions, contact on Discord: @mohamadassafbr',
-        'The "reset" button will reset EVERYTHING.',
-        'Save the information before resetting!',
-        'Liked the work? Give a little help!',
-        'PIX QR CODE:',
-        'To help in the work!'
-    ],
-    totalLabel: 'Total:',
-    copyButton: 'Copy',
-    generateResultButton: 'Generate written result',
-    dropdownLabel: 'I am using:',
-    otherInputLabel: 'Others:',
-    aceNotificationTitle: "Ace's:",
-    resetButton: 'Reset',
-};
-
 const listaDeTanks = [
     {
         nome: 'HT Peltast',
@@ -283,31 +244,61 @@ const listaDropdown = [
 ];
 
 const counts = new Array(listaDeTanks.length).fill(0);
-let isPortuguese = true;
 let listaDeTanquesAbatidos = [];
 let total = 0;
 const notificationImagesContainer = document.querySelector('#notificationImagesContainer');
 
-function toggleLanguage() {
-    isPortuguese = !isPortuguese;
-
-    const content = isPortuguese ? portugueseContent : englishContent;
-
-    document.querySelector('.total-container #total-label').textContent = content.totalLabel;
-    document.querySelector('.total-container .copy-button').textContent = content.copyButton;
-    document.querySelector('.total-container .result-button').textContent = content.generateResultButton;
-    document.querySelector('.dropdown-container .dropdown-label').textContent = content.dropdownLabel;
-    document.querySelector('.outro-Container label').textContent = content.otherInputLabel;
-    document.querySelector('#resetButton').textContent = content.resetButton;
-
-    document.querySelector('.info h2').textContent = content.infoTitle;
-    document.querySelectorAll('.info p').forEach((p, index) => {
-        p.textContent = content.infoText[index];
+document.addEventListener('DOMContentLoaded', () => {
+    listaDeTanks.forEach((item, index) => {
+        const alvo = document.querySelector('.tankgrid');
+        alvo.innerHTML +=
+            `<div id="tank-square" class="bg-sky-500 w-full py-5 px-2 rounded-xl shadow hover:bg-sky-600 cursor-pointer relative">
+                <img src="${item.iconPath}" class="w-full" alt="Imagem ${index}"/>
+                <div class="absolute bottom-1 left-2 counter" id="counter-${index}">0</div>
+                <button class="rounded-xl shadow absolute top-1 right-1 bg-white hover:bg-gray-200 w-5 h-5 flex justify-center items-center" onclick="decrementCount(${index})">
+                    <div class="w-3 h-1 bg-black"></div>
+                </button>
+            </div>`;
     });
-    document.querySelector('.outro-Container label').textContent = content.otherInputLabel;
-    document.querySelector('.aces').textContent = content.aceNotificationTitle;
-    document.querySelector('#resetButton').textContent = content.resetButton;
 
+    document.querySelectorAll('#tank-square').forEach((square, index) => {
+        square.addEventListener('click', () => incrementCount(index));
+    });
+
+    listaDropdown.forEach((item) => {
+        const alvo = document.querySelector('#dropdownLegal');
+        alvo.innerHTML +=
+            `<option value="${item.custo}">${item.nome}</option>`;
+    });
+
+    const languageSwitch = document.getElementById('languageSwitch');
+    languageSwitch.addEventListener('change', toggleLanguage);
+
+    toggleLanguage();
+});
+
+function toggleLanguage() {
+    const isEnglish = document.getElementById('languageSwitch').checked;
+    const elementsToTranslate = [
+        { id: 'dropdown-label', pt: 'Estou usando um:', en: 'I am using a:' },
+        { id: 'total-label', pt: 'Total de Kill:', en: 'Total Kills:' },
+        { id: 'generate-button', pt: 'Gerar resultado', en: 'Generate result' },
+        { id: 'copy-button', pt: 'Copiar', en: 'Copy' },
+        { id: 'resetButton', pt: 'Resetar', en: 'Reset' },
+        { id: 'reset-warning', pt: 'O botão "resetar" irá dar reset em TUDO.<br>Salve bem as informações antes de resetar!', en: 'The "reset" button will reset EVERYTHING.<br>Save your information before resetting!' },
+        { id: 'other-label', pt: 'Outros:', en: 'Others:' },
+        { id: 'aces-label', pt: 'Ace\'s:', en: 'Aces:' },
+        { id: 'info-label', pt: 'Informações:', en: 'Information:' },
+        { id: 'info-text', pt: 'Bugs, dúvidas ou sugestões, chame no Discord abaixo:<br><span>@mohamadassafbr</span><br>Gostou do trabalho? Dá uma ajudinha ai!<br><span>PIX QR CODE:</span>', en: 'Bugs, questions, or suggestions, call on Discord below:<br><span>@mohamadassafbr</span><br>Liked the work? Help us out!<br><span>PIX QR CODE:</span>' },
+        { id: 'help-text', pt: 'Para ajudar no trabalho!', en: 'To help with the work!' }
+    ];
+
+    elementsToTranslate.forEach(element => {
+        document.getElementById(element.id).innerHTML = isEnglish ? element.en : element.pt;
+    });
+
+    document.getElementById('language-label').textContent = isEnglish ? 'EN' : 'PT';
+    document.getElementById('language-label-en').textContent = isEnglish ? 'PT' : 'EN';
 }
 
 function incrementCount(index) {
@@ -339,7 +330,6 @@ function updateTotal() {
     total = counts.reduce((acc, val) => acc + val, 0);
     document.querySelector('#total-count').textContent = total;
 }
-
 function checkNotification() {
     const aceCount = Math.floor(total / 5);
     const currentAceImages = notificationImagesContainer.childElementCount;
@@ -380,6 +370,7 @@ function hideNotification() {
 }
 
 function generateResult() {
+    console.log('teste');
     let mensagem = "";
     let totalAces = Math.floor(total / 5);
 
@@ -447,16 +438,18 @@ function somaCusto() {
 document.querySelector('#resetButton').addEventListener('click', resetCounts);
 
 listaDeTanks.forEach((item, index) => {
-    const alvo = document.querySelector('.grid');
+    const alvo = document.querySelector('.tankgrid');
     alvo.innerHTML +=
-        `<div class="square">
-            <img src="${item.iconPath}" alt="Imagem ${index}"/>
-            <div class="counter" id="counter-${index}">0</div>
-            <button class="subtract-button" onclick="decrementCount(${index})">-</button>
+        `<div id="tank-square" class="bg-sky-500 w-full py-5 px-2 rounded-xl shadow hover:bg-sky-600 cursor-pointer relative">
+            <img src="${item.iconPath}" class="w-full" alt="Imagem ${index}"/>
+            <div class="absolute bottom-1 left-2" id="counter-${index}">0</div>
+            <button class="rounded-xl shadow absolute top-1 right-1 bg-white hover:bg-gray-200 w-5 h-5 flex justify-center items-center" onclick="decrementCount(${index})">
+                <div class="w-3 h-1 bg-black"></div>
+            </button>
         </div>`;
 });
 
-document.querySelectorAll('.square').forEach((square, index) => {
+document.querySelectorAll('#tank-square').forEach((square, index) => {
     square.addEventListener('click', () => incrementCount(index));
 });
 

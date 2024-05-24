@@ -1,0 +1,7 @@
+{
+  "name": "Projeto do Blue",
+  "packageManager": "yarn@4.2.2",
+  "dependencies": {
+    "tailwindcss": "^3.4.3"
+  }
+}
