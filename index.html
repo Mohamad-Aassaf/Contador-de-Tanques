@@ -4,48 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contador de Cliques</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="info" id="fixado">
-            <h2 class="tit">Informações: </h2>
-            <p class="paraf2">Bugs, dúvidas ou sugestões, chame no Discord abaixo:</p>
-            <p class="paraf2">@mohamadassafbr</p>
-            <p class="paraft">O botão "resetar" irá dar reset em TUDO.</p>
-            <p class="paraft">Salve bem as informações antes de resetar!</p>
-            <p class="paraft">Gostou do trabalho? Dá uma ajudinha ai! </p>
-            <p class="paraft">PIX QR CODE: </p>
-            <img src="qrCode.png" alt="qrCode">
-            <p class="paraft">Para ajudar no trabalho!</p>
+    <div class="bg-blue-200 grid md:grid-cols-3 grid-cols-1 gap-4 min-h-screen">
+        <div class="px-5">
+            <div class="py-5 text-lg font-semibold">
+                <label for="dropdown" class="dropdown-label">Estou usando um:</label>
+                <select id="dropdownLegal" class="dropdown"></select>
+            </div>
+            <div class="tankgrid grid md:grid-cols-5 grid-cols-3 gap-4">
+            </div>
         </div>
+        <div class="text-lg">
+            <div class="total-container p-4">
+                <div class="text-3xl mb-5">
+                    <span id="total-label">Total de Kill:</span>
+                    <span id="total-count">0</span>
+                </div>
+                <div class="grid grid-cols-3 gap-4 mb-5">
+                    <button class="bg-sky-500 w-full text-white font-bold uppercase px-3 py-2 rounded shadow hover:bg-sky-600 result-button" onclick="generateResult()">Gerar resultado</button>
+                    <button class="bg-sky-500 w-full text-white font-bold uppercase px-3 py-2 rounded shadow hover:bg-sky-600 copy-button" onclick="copyResult()">Copiar</button>
+                    <button class="bg-sky-500 w-full text-white font-bold uppercase px-3 py-2 rounded shadow hover:bg-sky-600 resetBotao" id="resetButton">Resetar</button>
+                </div>
 
-        <div class="dropdown-container">
-            <label for="dropdown" class="dropdown-label">Estou usando um:</label>
-            <select id="dropdownLegal" class="dropdown">
-            </select>
+                <div class="flex justify-center">
+                    <p class="bg-red-300 font-semibold px-4 py-2 m-0 text-sm text-center rounded shadow-xl">
+                        O botão "resetar" irá dar reset em TUDO.
+                        <br>
+                        Salve bem as informações antes de resetar!
+                    </p>
+                </div>
+            </div>
+            <div id="mensagemdaorinha"></div>
+            <div class="outro-Container mb-5">
+                <label for="otherText" class="outros">Outros:</label>
+                <input type="text" id="otherText">
+            </div>
+            <div class="caixa font-semibold"></div>
+            <div class="notification-container font-semibold">
+                <h3 class="aces">Ace's:</h3>
+                <div class="notification-images grid grid-cols-4" id="notificationImagesContainer"></div>
+            </div>
         </div>
-
-        <div class="grid">
-        </div>
-
-        <div class="total-container">
-            <span id="total-label">Total:</span>
-            <span id="total-count">0</span>
-            <button class="result-button" onclick="generateResult()">Gerar resultado por escrito</button>
-            <button class="copy-button" onclick="copyResult()">Copiar</button>
-            <button class="resetBotao" id="resetButton">Resetar</button>
-        </div>
-
-        <div class="caixa"></div>
-        <div id="mensagemdaorinha"></div>
-        <div class="outro-Container">
-            <label for="otherText" class="outros">Outros:</label>
-            <input type="text" id="otherText">
-        </div>
-        <div class="notification-container">
-            <h3 class="aces">Ace's:</h3>
-            <div class="notification-images" id="notificationImagesContainer"></div>
+        
+        
+        
+        <div class="my-5 px-4" id="fixado">
+            <div class="bg-white py-4 px-8 rounded-xl shadow-xl flex flex-col items-center">
+                <h2 class="text-lg font-bold mb-5">Informações: </h2>
+                <p class="text-center mb-5">
+                    Bugs, dúvidas ou sugestões, chame no Discord abaixo:
+                    <br>
+                    <span>@mohamadassafbr</span>
+                    <br>
+                    Gostou do trabalho? Dá uma ajudinha ai!
+                    <br>
+                    <span>PIX QR CODE:</span>
+                </p>
+                <img class="w-1/3 max-w-[170px] mb-5" src="qrCode.png" alt="qrCode">
+                <p class="text-center">Para ajudar no trabalho!</p>
+            </div>
         </div>
     </div>
 

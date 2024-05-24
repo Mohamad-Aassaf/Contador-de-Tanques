@@ -249,6 +249,7 @@ let total = 0;
 const notificationImagesContainer = document.querySelector('#notificationImagesContainer');
 
 function incrementCount(index) {
+    console.log('aa');
     if (counts[index] === 0) {
         document.querySelector(`#counter-${index}`).style.color = 'greenyellow';
     }
@@ -318,6 +319,7 @@ function hideNotification() {
 }
 
 function generateResult() {
+    console.log('teste');
     let mensagem = "";
     let totalAces = Math.floor(total / 5);
 
@@ -385,16 +387,18 @@ function somaCusto() {
 document.querySelector('#resetButton').addEventListener('click', resetCounts);
 
 listaDeTanks.forEach((item, index) => {
-    const alvo = document.querySelector('.grid');
+    const alvo = document.querySelector('.tankgrid');
     alvo.innerHTML +=
-        `<div class="square">
-            <img src="${item.iconPath}" alt="Imagem ${index}"/>
-            <div class="counter" id="counter-${index}">0</div>
-            <button class="subtract-button" onclick="decrementCount(${index})">-</button>
+        `<div id="tank-square" class="bg-sky-500 w-full py-5 px-2 rounded-xl shadow hover:bg-sky-600 cursor-pointer relative">
+            <img src="${item.iconPath}" class="w-full" alt="Imagem ${index}"/>
+            <div class="absolute bottom-1 left-2" id="counter-${index}">0</div>
+            <button class="rounded-xl shadow absolute top-1 right-1 bg-white hover:bg-gray-200 w-5 h-5 flex justify-center items-center" onclick="decrementCount(${index})">
+                <div class="w-3 h-1 bg-black"></div>
+            </button>
         </div>`;
 });
 
-document.querySelectorAll('.square').forEach((square, index) => {
+document.querySelectorAll('#tank-square').forEach((square, index) => {
     square.addEventListener('click', () => incrementCount(index));
 });
 
