@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contador de Cliques</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
     <div class="bg-blue-200 grid md:grid-cols-3 grid-cols-1 gap-4 min-h-screen">
         <div class="px-5">
@@ -23,9 +25,15 @@
                     <span id="total-count">0</span>
                 </div>
                 <div class="grid grid-cols-3 gap-4 mb-5">
-                    <button class="bg-sky-500 w-full text-white font-bold uppercase px-3 py-2 rounded shadow hover:bg-sky-600 result-button" onclick="generateResult()">Gerar resultado</button>
-                    <button class="bg-sky-500 w-full text-white font-bold uppercase px-3 py-2 rounded shadow hover:bg-sky-600 copy-button" onclick="copyResult()">Copiar</button>
-                    <button class="bg-sky-500 w-full text-white font-bold uppercase px-3 py-2 rounded shadow hover:bg-sky-600 resetBotao" id="resetButton">Resetar</button>
+                    <button
+                        class="bg-sky-500 w-full text-white font-bold uppercase px-3 py-2 rounded shadow hover:bg-sky-600 result-button"
+                        onclick="generateResult()">Gerar resultado</button>
+                    <button
+                        class="bg-sky-500 w-full text-white font-bold uppercase px-3 py-2 rounded shadow hover:bg-sky-600 copy-button"
+                        onclick="copyResult()">Copiar</button>
+                    <button
+                        class="bg-sky-500 w-full text-white font-bold uppercase px-3 py-2 rounded shadow hover:bg-sky-600 resetBotao"
+                        id="resetButton">Resetar</button>
                 </div>
 
                 <div class="flex justify-center">
@@ -47,9 +55,6 @@
                 <div class="notification-images grid grid-cols-4" id="notificationImagesContainer"></div>
             </div>
         </div>
-        
-        
-        
         <div class="my-5 px-4" id="fixado">
             <div class="bg-white py-4 px-8 rounded-xl shadow-xl flex flex-col items-center">
                 <h2 class="text-lg font-bold mb-5">Informações: </h2>
@@ -70,4 +75,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
