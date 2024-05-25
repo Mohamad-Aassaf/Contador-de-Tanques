@@ -40,7 +40,7 @@ body {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 10px;
     margin-bottom: 20px;
 }
@@ -256,6 +256,117 @@ body {
 #languageSwitchButton:hover {
     background-color: #530000fa;
 }
+.language-switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.language-switch-image {
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+}
+.caiman,
+.felb {
+    width: 200px;
+    height: 200px;
+}
 .paypal {
     font-weight: bold;
+}
+
+@media (max-width: 1200px) {
+    .grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .square {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 576px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dropdown-label, .dropdown, .total-container {
+        font-size: 14px;
+    }
+
+    .result-button, .resetBotao, .copy-button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .caixa, #mensagemdaorinha {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    #otherText {
+        font-size: 20px;
+    }
+
+    #total-label, #total-count {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    .notification-images {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .notification-image {
+        width: 80px;
+        height: 80px;
+    }
+
+    .info {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .aces {
+        font-size: 24px;
+    }
+
+    .outros {
+        font-size: 24px;
+    }
+
+    .subtract-button {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: repeat(3, 100px);
+        padding-left: 100px;
+    }
+
+    .language-switch-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .language-switch-image {
+        margin: 10px 0;
+    }
 }
