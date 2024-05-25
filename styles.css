@@ -1,6 +1,10 @@
+@font-face {
+    font-family: Special Elite;
+    src: url(SpecialElite-Regular.ttf);
+}
 body {
     background-color: #414141;
-    font-family: Arial, sans-serif;
+    font-family: Special Elite;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,7 +16,6 @@ body {
 }
 
 .dropdown-container {
-    background-color: grey;
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 20px;
@@ -20,7 +23,7 @@ body {
 }
 
 .dropdown-label {
-    background-color: gray;
+    color: white;
     padding: 10px;
     border-radius: 5px;
     font-weight: bolder;
@@ -59,10 +62,9 @@ body {
 }
 
 .square img {
-    width: 100%;
-    height: 100%;
+    width: 95%;
+    height: 95%;
     object-fit: cover;
-    padding-left: 8px;
     border-radius: 4px;
 }
 
@@ -99,6 +101,7 @@ body {
 .resetBotao,
 .copy-button {
     background-color: #2ecc71;
+    font-family: Special Elite;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -127,7 +130,6 @@ body {
     font-weight: bold;
     padding: 10px;
     border-radius: 5px;
-    max-width: 600px;
     background-color: #000000;
     color: white;
 }
@@ -202,40 +204,41 @@ body {
     color: red;
     font-size: large;
     font-weight: bold;
-    background-color: rgb(0, 0, 0);
+    background-color: #000000;
     padding: 10px;
     border-radius: 5px;
 }
 
 .aces {
-    background-color: grey;
+    color: white;
+    font-size: 30px;
     border-radius: 5px;
     padding: 10px;
 }
 
 .grid {
     border-radius: 5px;
-    background-color: gray;
     padding: 20px;
 }
 
 .outros {
-    background-color: gray;
+    color: white;
+    font-size: 28px;
     padding: 10px;
     border-radius: 5px;
     font-weight: bolder;
 }
 
 #total-label {
-    background-color: gray;
+    color: white;
     padding: 10px;
     font-weight: bolder;
     border-radius: 5px;
 }
 
 #total-count {
-    background-color: rgb(0, 0, 0);
     color: red;
+    font-size: 20px;
     padding: 10px;
     font-weight: bolder;
     border-radius: 5px;
@@ -244,7 +247,7 @@ body {
     background-color: #910000fa;
     color: white;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bolder;
     border: none;
     border-radius: 4px;

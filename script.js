@@ -9,7 +9,6 @@ const portugueseContent = {
         'PIX QR CODE:',
         'Para ajudar no trabalho!'
     ],
-    
     totalLabel: 'Total:',
     copyButton: 'Copiar',
     generateResultButton: 'Gerar resultado por escrito',
@@ -17,6 +16,7 @@ const portugueseContent = {
     otherInputLabel: 'Outros:',
     aceNotificationTitle: "Ace's:",
     resetButton: 'Resetar',
+    resultMessageLabel: 'Resultado:'
 };
 
 const englishContent = {
@@ -37,6 +37,12 @@ const englishContent = {
     otherInputLabel: 'Others:',
     aceNotificationTitle: "Ace's:",
     resetButton: 'Reset',
+    resultMessageLabel: 'Result:'
+};
+
+const resultMessageTranslations = {
+    'SE PAGOU': 'YOU PAID HIMSELF',
+    'ME PARECE SER UM PROBLEMA DE HABILIDADE!': 'SKILL ISSUE DETECTED'
 };
 
 const listaDeTanks = [
@@ -396,27 +402,44 @@ function generateResult() {
         mensagem += otherText + " ";
     }
 
+    if (mensagem.endsWith(" + ")) {
+        mensagem = mensagem.slice(0, -3);
+    }
+
     const dropdownIndex = document.querySelector('#dropdownLegal').selectedIndex;
     const dropdownNome = listaDropdown[dropdownIndex].nome;
 
-    if (dropdownNome !== "Nenhum") {
+    if (dropdownNome !== "Nenhum" && isPortuguese == true) {
         mensagem += ` C/ ${dropdownNome}`;
+    } else if (dropdownNome !== "Nenhum" && isPortuguese == false) {
+        mensagem += ` W/ ${dropdownNome}`;
     }
 
     mensagem += ` (${totalAces} Ace${totalAces !== 1 ? 's' : ''})`;
-    document.querySelector('.caixa').innerHTML = mensagem;
+
+    const resultMessageElement = document.querySelector('.caixa');
+    resultMessageElement.textContent = mensagem;
 
     const valorDropdown = parseInt(document.querySelector('#dropdownLegal').value);
     const soma = somaCusto();
     const messageElement = document.getElementById('mensagemdaorinha');
 
-    if (soma >= valorDropdown) {
+    if (soma >= valorDropdown && isPortuguese == true) {
         const vezes = Math.floor(soma / valorDropdown);
-        messageElement.textContent = `SE PAGOU ${vezes}x!`
-    } else if (soma < valorDropdown) {
-        messageElement.textContent = 'ME PARECE SER UM PROBLEMA DE HABILIDADE!'
+        messageElement.textContent = `SE PAGOU ${vezes}x!`;
+    } else if (soma < valorDropdown && isPortuguese == true) {
+        messageElement.textContent = 'ME PARECE SER UM PROBLEMA DE HABILIDADE!';
+    }
+    
+    if (soma >= valorDropdown && isPortuguese == false) {
+        const vezes = Math.floor(soma / valorDropdown);
+        messageElement.textContent = `YOU PAID YOURSELF ${vezes} TIMES!`;
+    } else if (soma < valorDropdown && isPortuguese == false) {
+        messageElement.textContent = 'SKILL ISSUE DETECTED!';
     }
 }
+
+document.querySelector('.result-button').addEventListener('click', generateResult);
 
 /* RESETAR AS CONTAGENS */
 function resetCounts() {
@@ -427,6 +450,8 @@ function resetCounts() {
     });
     updateTotal();
     listaDeTanquesAbatidos = [];
+
+    document.querySelector('#mensagemdaorinha').textContent = "";
     document.querySelector('.caixa').textContent = "";
     hideNotification();
 }
