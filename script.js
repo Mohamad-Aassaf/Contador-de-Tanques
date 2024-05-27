@@ -1,4 +1,5 @@
 const portugueseContent = {
+    title: 'Contador de Abates',
     infoTitle: 'Informações:',
     infoText: [
         'Clique nos quadrados dos veiculos respectivos para',
@@ -41,6 +42,7 @@ const englishContent = {
         'FOR BRAZIL PIX:',
         'To help in the work!'
     ],
+    title: 'Tank kill counter',
     totalLabel: 'Total:',
     copyButton: 'Copy',
     generateResultButton: 'Generate written result',
@@ -115,6 +117,7 @@ function toggleLanguage() {
 
     const content = isPortuguese ? portugueseContent : englishContent;
 
+    document.querySelector('.titulo').textContent = content.title;
     document.querySelector('.total-container #total-label').textContent = content.totalLabel;
     document.querySelector('.total-container .copy-button').textContent = content.copyButton;
     document.querySelector('.total-container .result-button').textContent = content.generateResultButton;
