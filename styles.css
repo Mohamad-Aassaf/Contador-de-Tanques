@@ -2,8 +2,10 @@
     font-family: Special Elite;
     src: url(SpecialElite-Regular.ttf);
 }
+
 body {
-    background-color: #414141;
+    background: linear-gradient(to right, rgb(19, 16, 48), rgb(49, 41, 124) 50%, rgb(19, 16, 48));
+    height: 100vh; 
     font-family: Special Elite;
     display: flex;
     flex-direction: column;
@@ -36,6 +38,11 @@ body {
     font-size: 16px;
     font-weight: bold;
     border-radius: 5px;
+    background-color: rgb(32, 26, 85);
+    color: white;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 2);
+    z-index: 1;
+    transition: 1s ease;
 }
 
 .grid {
@@ -49,16 +56,19 @@ body {
     position: relative;
     width: 100px;
     height: 100px;
-    background-color: #0f0061;
+    background-color: #00026b;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     border-radius: 18px;
+    border: 2px solid rgb(194, 194, 194);
+    transition: all .3s ease-in;
 }
 
 .square:hover {
-    background-color: #010044;
+    background-color: #09003f;
+    border-color: #414141;
 }
 
 .square img {
@@ -97,32 +107,63 @@ body {
     margin-right: 20px;
 }
 
-.result-button,
-.resetBotao,
-.copy-button {
-    background-color: #2ecc71;
+/* BOTÕES */
+
+#languageSwitchButton {
     font-family: Special Elite;
+    font-size: 15px;
+    font-weight: bold;
     color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    background-color: rgb(25, 97, 147);
+    border-radius: 5px;
+    margin-top: 350px;
+    padding: 10px;
+    transition: all 1s;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 2);
+}
+
+#languageSwitchButton:hover {
+    background: linear-gradient(to right, rgb(32, 26, 85), rgb(49, 41, 124) 50%, rgb(32, 26, 85));
+}
+.result-button {
+    font-family: Special Elite;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(25, 97, 147);
+    border-radius: 5px;
+    padding: 10px;
+    transition: all 1s;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 2);
+}
+
+.copy-button {
+    font-family: Special Elite;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(25, 97, 147);
+    border-radius: 5px;
+    padding: 10px;
+    transition: all 1s;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 2);
 }
 
 .resetBotao {
-    background-color: #0c00b3;
+    font-family: Special Elite;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(25, 97, 147);
+    border-radius: 5px;
+    padding: 10px;
+    transition: all 1s;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 2);
 }
-
 .result-button:hover,
-.resetBotao:hover,
-.copy-button:hover {
-    background-color: #1c7a43;
-}
-
-.copy-button {
-    background-color: #0c00b3;
-    margin: 0 5px;
+.copy-button:hover,
+.resetBotao:hover {
+    background: linear-gradient(to right, rgb(32, 26, 85), rgb(49, 41, 124) 50%, rgb(32, 26, 85));
 }
 
 .caixa {
@@ -242,19 +283,6 @@ body {
     padding: 10px;
     font-weight: bolder;
     border-radius: 5px;
-}
-#languageSwitchButton {
-    background-color: #910000fa;
-    color: white;
-    padding: 10px 20px;
-    font-size: 15px;
-    font-weight: bolder;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-#languageSwitchButton:hover {
-    background-color: #530000fa;
 }
 .language-switch-container {
     display: flex;

@@ -173,7 +173,7 @@ function checkNotification() {
 
 function showNotification() {
     const newNotificationImage = document.createElement('img');
-    newNotificationImage.src = 'ace.png';
+    newNotificationImage.src = 'assets/outros/ace.png';
     newNotificationImage.className = 'notification-image';
     notificationImagesContainer.appendChild(newNotificationImage);
 }
