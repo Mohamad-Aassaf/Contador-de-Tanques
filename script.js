@@ -10,9 +10,7 @@ const portugueseContent = {
         'chame no Discord abaixo:',
         '@mohamadassafbr',
         'Gostou do trabalho? Dá uma ajudinha ai!',
-        'Para estrangeiros:',
-        'LINK Paypal',
-        'PIX QR CODE:',
+        'PIX:',
         'Para ajudar no trabalho!'
     ],
     totalLabel: 'Total:',
@@ -36,10 +34,8 @@ const englishContent = {
         'For bugs, questions, or suggestions,',
         'contact on Discord below:',
         '@mohamadassafbr',
-        'Liked the work? Give a little help!',
-        'For foreigners:',
-        'LINK Paypal',
-        'FOR BRAZIL PIX:',
+        'Did you like this? Send me a tip!',
+        'PIX (Brazil Only):',
         'To help in the work!'
     ],
     title: 'Tank kill counter',
