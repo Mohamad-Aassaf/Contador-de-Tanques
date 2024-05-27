@@ -1,11 +1,16 @@
 const portugueseContent = {
     infoTitle: 'Informações:',
     infoText: [
-        'Bugs, dúvidas ou sugestões, chame no Discord: @mohamadassafbr',
-        'O botão "resetar" irá dar reset em TUDO.',
-        'Salve bem as informações antes de resetar!',
-        'Para estrangeiros:',
+        'Clique nos quadrados dos veiculos respectivos para',
+        'contablizar o abate.',
+        'Clique na bolinha com o símbolo de subtrair caso queira',
+        'remover um abate por clique errado ou algo do genero.',
+        'Bugs, dúvidas ou sugestões,',
+        'chame no Discord abaixo:',
+        '@mohamadassafbr',
         'Gostou do trabalho? Dá uma ajudinha ai!',
+        'Para estrangeiros:',
+        'LINK Paypal',
         'PIX QR CODE:',
         'Para ajudar no trabalho!'
     ],
@@ -17,17 +22,22 @@ const portugueseContent = {
     aceNotificationTitle: "Ace's:",
     resetButton: 'Resetar',
     resultMessageLabel: 'Resultado:',
-    changeLanguage: 'Switch Language'
+    changeLanguage: 'Trocar Lingua'
 };
 
 const englishContent = {
     infoTitle: 'Information:',
     infoText: [
-        'For bugs, questions, or suggestions, contact on Discord: @mohamadassafbr',
-        'The "reset" button will reset EVERYTHING.',
-        'Save the information before resetting!',
+        'Click on the respective vehicle squares to',
+        'count the kill.',
+        'Click on the circle with the minus symbol if you want to',
+        'remove a kill due to a miss click or something similar.',
+        'For bugs, questions, or suggestions,',
+        'contact on Discord below:',
+        '@mohamadassafbr',
         'Liked the work? Give a little help!',
-        'For foreigners: ',
+        'For foreigners:',
+        'LINK Paypal',
         'FOR BRAZIL PIX:',
         'To help in the work!'
     ],
@@ -39,7 +49,7 @@ const englishContent = {
     aceNotificationTitle: "Ace's:",
     resetButton: 'Reset',
     resultMessageLabel: 'Result:',
-    changeLanguage: 'Trocar Lingua'
+    changeLanguage: 'Switch Language'
 };
 const listaDeTanks = [
     { "nome": "HT Peltast", "iconPath": "assets/peltast.png", "preco": 23 },

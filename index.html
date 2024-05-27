@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <h1 class="titulo">Contador de Abates</h1>
     <div class="language-switch-container">
-        <img src="assets/outros/felbLogo.png" alt="FELB" class="felb">
         <button id="languageSwitchButton" onclick="toggleLanguage()">Switch Language</button>
-        <img src="assets/outros/caimanLogo.png" alt="CAIMAN" class="caiman">
     </div>
     <div class="container">
         <div class="dropdown-container">
@@ -22,6 +21,11 @@
         <div class="grid">
         </div>
 
+        <div class="outro-Container">
+            <label for="otherText" class="outros">Outros:</label>
+            <input type="text" id="otherText">
+        </div>
+        
         <div class="total-container">
             <span id="total-label">Total:</span>
             <span id="total-count">0</span>
@@ -32,25 +36,31 @@
 
         <div class="caixa"></div>
         <div id="mensagemdaorinha"></div>
-        <div class="outro-Container">
-            <label for="otherText" class="outros">Outros:</label>
-            <input type="text" id="otherText">
-        </div>
         <div class="notification-container">
             <h3 class="aces">Ace's:</h3>
             <div class="notification-images" id="notificationImagesContainer"></div>
         </div>
-        <div class="info">
-            <h2>Informações:</h2>
-            <p>Bugs, dúvidas ou sugestões, chame no Discord abaixo: <span>@mohamadassafbr</span></p>
-            <p>O botão "resetar" irá dar reset em TUDO.</p>
-            <p>Salve bem as informações antes de resetar!</p>
-            <p>Gostou do trabalho? Dá uma ajudinha ai! </p>
-            <p>Para estrangeiros:</p>
-            <a class="paypal" href="https://www.paypal.com/donate/?hosted_button_id=HT779G7ZMTXCJ" target="_blank">LINK Paypal</a>
-            <p>PIX QR CODE: </p>
-            <img src="assets/outros/qrCode.png" alt="qrCode">
-            <p>Para ajudar no trabalho!</p>
+        <div class="info-box">
+            <div class="info">
+                <h2>Informações:</h2>
+                <p>Clique nos quadrados dos veiculos respectivos para</p>
+                <p>contablizar o abate.</p>
+                <p>Clique na bolinha com o símbolo de subtrair caso queira</p>
+                <p>remover um abate por clique errado ou algo do genero.</p>
+                <p>Bugs, dúvidas ou sugestões,</p>
+                <p>chame no Discord abaixo:</p>
+                <p><span>@mohamadassafbr</span></p>
+                <p>Gostou do trabalho? Dá uma ajudinha ai! </p>
+                <p>Para estrangeiros:</p>
+                <a class="paypal" href="https://www.paypal.com/donate/?hosted_button_id=HT779G7ZMTXCJ" target="_blank">LINK Paypal</a>
+                <p>PIX QR CODE: </p>
+                <img class="qrCodar" src="assets/outros/qrCode.png" alt="qrCode">
+                <p>Para ajudar no trabalho!</p>
+            </div>
+            <div class="image-container">
+                <img src="assets/outros/felbLogo.png" alt="FELB" class="felb">
+                <img src="assets/outros/caimanLogo.png" alt="CAIMAN" class="caiman">
+            </div>
         </div>
     </div>
     <script src="script.js"></script>

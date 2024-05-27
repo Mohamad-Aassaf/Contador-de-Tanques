@@ -4,12 +4,18 @@
 }
 
 body {
-    background: linear-gradient(to right, rgb(19, 16, 48), rgb(49, 41, 124) 50%, rgb(19, 16, 48));
+    background: linear-gradient(to right, rgb(20, 20, 20), rgb(60, 60, 60) 50%, rgb(20, 20, 20));
     height: 100vh; 
     font-family: Special Elite;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.titulo {
+    font-weight: bolder;
+    text-shadow: 1px 0 #fff, -1px 0 #fff, 0 1px #fff, 0 -1px #fff,
+                1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
 
 .container {
@@ -38,7 +44,7 @@ body {
     font-size: 16px;
     font-weight: bold;
     border-radius: 5px;
-    background-color: rgb(32, 26, 85);
+    background-color: #232325;
     color: white;
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 2);
     z-index: 1;
@@ -56,7 +62,7 @@ body {
     position: relative;
     width: 100px;
     height: 100px;
-    background-color: #00026b;
+    background-color: #232325;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -116,7 +122,6 @@ body {
     color: white;
     background-color: rgb(25, 97, 147);
     border-radius: 5px;
-    margin-top: 350px;
     padding: 10px;
     transition: all 1s;
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 2);
@@ -165,6 +170,11 @@ body {
 .resetBotao:hover {
     background: linear-gradient(to right, rgb(32, 26, 85), rgb(49, 41, 124) 50%, rgb(32, 26, 85));
 }
+.result-button,
+.copy-button,
+.resetBotao {
+    margin-right: 45px;
+}
 
 .caixa {
     font-size: 20px;
@@ -174,6 +184,7 @@ body {
     background-color: #000000;
     color: white;
 }
+
 
 #otherText {
     font-size: 25px;
@@ -205,21 +216,38 @@ body {
     margin-bottom: 5px;
 }
 
-.info {
-    top: 20px;
-    right: 20px;
-    background-color: #ffffff;
+.info-box {
+    display: flex;
+    text-align: left;
+    background-color: #161616;
+    color: whitesmoke;
     padding: 10px;
-    border: 1px solid #000000;
+    border: 4px solid #000000;
     border-radius: 5px;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.info {
+    flex: 1;
+}
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.caiman,
+.felb {
+    width: auto;
+    height: 300px;
 }
 
 .paraf2 {
     font-weight: bold;
 }
 
-.info .tit {
-    margin-top: 0;
+.titulo {
+    margin-bottom: 20px;
 }
 
 .info .paraf {
@@ -296,11 +324,6 @@ body {
     height: 50px;
     margin: 0 10px;
 }
-.caiman,
-.felb {
-    width: 200px;
-    height: 200px;
-}
 .paypal {
     font-weight: bold;
 }
@@ -330,7 +353,13 @@ body {
 
 @media (max-width: 576px) {
     .grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 50px);
+        padding-left: 0;
+    }
+
+    .square {
+        width: 80px;
+        height: 80px;
     }
 
     .dropdown-label, .dropdown, .total-container {
@@ -340,11 +369,6 @@ body {
     .result-button, .resetBotao, .copy-button {
         padding: 8px 15px;
         font-size: 14px;
-    }
-
-    .caixa, #mensagemdaorinha {
-        font-size: 16px;
-        padding: 8px;
     }
 
     #otherText {
@@ -381,11 +405,29 @@ body {
     .subtract-button {
         font-size: 16px;
     }
+
+    .caixa {
+        font-size: 16px;
+        padding: 8px;
+        max-width: calc(50% - 20px); 
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .language-switch-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .language-switch-image {
+        margin: 10px 0;
+    }
 }
 
 @media (max-width: 480px) {
     .grid {
-        grid-template-columns: repeat(3, 100px);
+        grid-template-columns: repeat(2, 0.3fr);
         padding-left: 100px;
     }
 
@@ -396,5 +438,19 @@ body {
 
     .language-switch-image {
         margin: 10px 0;
+    }
+
+    .info-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .image-container {
+        margin-top: 10px;
+    }
+
+    .caixa {
+        max-width: 100%;
     }
 }
