@@ -243,6 +243,7 @@ body {
 .felb {
     width: auto;
     height: 230px;
+    padding-bottom: 100px;
 }
 
 .paraf2 {
@@ -329,6 +330,7 @@ body {
 }
 .paypal {
     font-weight: bold;
+    color: rgb(184, 0, 240);
 }
 
 @media (max-width: 1200px) {
