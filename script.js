@@ -69,7 +69,7 @@ const listaDeTanks = [
     { "nome": "Ranseur", "iconPath": "assets/ranseur.png", "preco": 180 },
     { "nome": "Scorpion", "iconPath": "assets/scorpion.png", "preco": 160 },
     { "nome": "Ballista", "iconPath": "assets/ballista.png", "preco": 155 },
-    { "nome": "Talos", "iconPath": "assets/talos.png", "preco": 60 },
+    { "nome": "Talos", "iconPath": "assets/talos.png", "preco": 100 },
     { "nome": "SPG", "iconPath": "assets/spg.png", "preco": 1000 },
     { "nome": "BT", "iconPath": "assets/bt.png", "preco": 900 },
     { "nome": "BTD", "iconPath": "assets/btd.png", "preco": 1000 },
@@ -241,14 +241,14 @@ function generateResult() {
 
     if (soma >= valorDropdown && isPortuguese == true) {
         const vezes = Math.floor(soma / valorDropdown);
-        messageElement.textContent = `SE PAGOU ${vezes}x!`;
+        messageElement.textContent = `SE PAGOU  [EM CONSTRUÇÃO] ${vezes}x!`;
     } else if (soma < valorDropdown && isPortuguese == true) {
         messageElement.textContent = 'ME PARECE SER UM PROBLEMA DE HABILIDADE!';
     }
     
     if (soma >= valorDropdown && isPortuguese == false) {
         const vezes = Math.floor(soma / valorDropdown);
-        messageElement.textContent = `YOU PAID YOURSELF ${vezes} TIMES!`;
+        messageElement.textContent = `YOU PAID YOURSELF  [WORK IN PROGRESS] ${vezes} TIMES!`;
     } else if (soma < valorDropdown && isPortuguese == false) {
         messageElement.textContent = 'SKILL ISSUE DETECTED!';
     }
