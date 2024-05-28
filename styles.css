@@ -340,9 +340,10 @@ body {
     height: 50px;
     margin: 0 10px;
 }
-.paypal {
+.Patreon,
+.Kofi {
     font-weight: bold;
-    color: rgb(184, 0, 240);
+    color: rgb(218, 0, 0);
 }
 
 @media (max-width: 1200px) {
