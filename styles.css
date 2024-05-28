@@ -228,22 +228,34 @@ body {
     justify-content: space-between;
     margin-top: 20px;
 }
+
 .info {
     font-size: larger;
-    flex: 1;
-    
+    flex: 1;    
 }
-.image-container {
+
+.image-and-special-container {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: row;
     align-items: flex-end;
+    padding-bottom: 15px;
+}
+
+.Special {
+    padding-left: 100px;
+    font-size: 15px;
 }
 
 .caiman,
 .felb {
     width: auto;
     height: 230px;
-    padding-bottom: 100px;
 }
 
 .paraf2 {
