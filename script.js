@@ -5,13 +5,12 @@ const portugueseContent = {
         'Clique nos quadrados dos veiculos respectivos para',
         'contablizar o abate.',
         'Clique na bolinha com o símbolo de subtrair caso queira',
-        'remover um abate por clique errado ou algo do genero.',
+        'remover um abate.',
         'Bugs, dúvidas ou sugestões,',
         'chame no Discord abaixo:',
         '@mohamadassafbr',
         'Gostou do trabalho? Dá uma ajudinha ai!',
-        'PIX:',
-        'Para ajudar no trabalho!'
+        'PIX:'
     ],
     totalLabel: 'Total:',
     copyButton: 'Copiar',
@@ -30,13 +29,12 @@ const englishContent = {
         'Click on the respective vehicle squares to',
         'count the kill.',
         'Click on the circle with the minus symbol if you want to',
-        'remove a kill due to a miss click or something similar.',
+        'remove a kill.',
         'For bugs, questions, or suggestions,',
         'contact on Discord below:',
         '@mohamadassafbr',
         'Did you like this? Send me a tip!',
-        'PIX (Brazil Only):',
-        'To help in the work!'
+        'PIX (Brazil Only):'
     ],
     title: 'Tank kill counter',
     totalLabel: 'Total:',
@@ -108,7 +106,7 @@ let listaDeTanquesAbatidos = [];
 let total = 0;
 const notificationImagesContainer = document.querySelector('#notificationImagesContainer');
 
-function toggleLanguage() {
+function toggleLanguage() { // Troca a lingua
     isPortuguese = !isPortuguese;
 
     const content = isPortuguese ? portugueseContent : englishContent;
@@ -133,7 +131,7 @@ function toggleLanguage() {
 
 }
 
-function incrementCount(index) {
+function incrementCount(index) { // aumenta contagem
     if (counts[index] === 0) {
         document.querySelector(`#counter-${index}`).style.color = 'greenyellow';
     }
@@ -144,7 +142,7 @@ function incrementCount(index) {
     listaDeTanquesAbatidos.push(listaDeTanks[index]);
 }
 
-function decrementCount(index) {
+function decrementCount(index) { // diminiu contagem
     event.stopPropagation();
     if (counts[index] === 1) {
         document.querySelector(`#counter-${index}`).style.color = 'red';
